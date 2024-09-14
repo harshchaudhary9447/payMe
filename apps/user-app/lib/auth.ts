@@ -64,4 +64,23 @@ export const authOptions = {
     })
   ],
   secret: process.env.NEXTAUTH_SECRET,
+
+  callbacks:{
+    async jwt({token,user}:any){
+      if(user){
+        token.id = user.id,
+        token.phonenumber = user.phonenumber
+      }
+      return token;
+    },
+
+  async session({session,token}:any)
+  {
+    if (token) {
+      session.user.id = token.id;
+      session.user.phonenumber = token.phonenumber;
+    }
+    return session
+  }
+},
 }
