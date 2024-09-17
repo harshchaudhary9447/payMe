@@ -12,7 +12,7 @@ async function getBalance(){
   const session = await getServerSession(authOptions);
   const balance = await client.balance.findFirst({
     where:{
-      userId: Number(session?.user?.email),
+      userId: Number(session?.user?.id),
     }
   });
 
