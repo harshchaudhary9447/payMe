@@ -47,6 +47,13 @@ export const authOptions = {
               }
             });
 
+            const balance = await client.balance.create({
+              data :{
+                userId:Number(user.id),
+                amount :0,
+                locked: 0
+              }
+            })
             return {
               id : user.id.toString(),
               email : user.email

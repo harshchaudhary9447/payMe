@@ -18,14 +18,14 @@ export async function createOnRampTransaction(amount:number,provider:string)
             }
         }
 
-        client.onRampTransaction.create({
+      await  client.onRampTransaction.create({
             data :{
-                userId,
+                userId :Number(userId),
                 amount:amount*100,
                 status:"Processing",
                 startTime : new Date(),
                 provider,
-                token:Math.random().toString(),
+                token:(Math.floor(Math.random() * 100) + 1).toString(),
             }
         })
 
